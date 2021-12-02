@@ -1,0 +1,4 @@
+C:\Users\MelannyQuintero\Desktop\ProyectosProgramaciónSoftware\PSofVentas\CapaDeEntidades\obj\Debug\CapaDeEntidades.csproj.AssemblyReference.cache
+C:\Users\MelannyQuintero\Desktop\ProyectosProgramaciónSoftware\PSofVentas\CapaDeEntidades\obj\Debug\CapaDeEntidades.Properties.Resources.resources
+C:\Users\MelannyQuintero\Desktop\ProyectosProgramaciónSoftware\PSofVentas\CapaDeEntidades\obj\Debug\CapaDeEntidades.csproj.GenerateResource.cache
+C:\Users\MelannyQuintero\Desktop\ProyectosProgramaciónSoftware\PSofVentas\CapaDeEntidades\obj\Debug\CapaDeEntidades.csproj.CoreCompileInputs.cache

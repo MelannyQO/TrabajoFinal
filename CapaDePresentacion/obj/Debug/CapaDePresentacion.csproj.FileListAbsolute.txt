@@ -1,0 +1,6 @@
+C:\Users\MelannyQuintero\Desktop\ProyectosProgramaciónSoftware\PSofVentas\CapaDePresentacion\obj\Debug\CapaDePresentacion.FormLogin.resources
+C:\Users\MelannyQuintero\Desktop\ProyectosProgramaciónSoftware\PSofVentas\CapaDePresentacion\obj\Debug\CapaDePresentacion.FormUsuarios.resources
+C:\Users\MelannyQuintero\Desktop\ProyectosProgramaciónSoftware\PSofVentas\CapaDePresentacion\obj\Debug\CapaDePresentacion.Properties.Resources.resources
+C:\Users\MelannyQuintero\Desktop\ProyectosProgramaciónSoftware\PSofVentas\CapaDePresentacion\obj\Debug\CapaDePresentacion.csproj.GenerateResource.cache
+C:\Users\MelannyQuintero\Desktop\ProyectosProgramaciónSoftware\PSofVentas\CapaDePresentacion\obj\Debug\CapaDePresentacion.csproj.CoreCompileInputs.cache
+C:\Users\MelannyQuintero\Desktop\ProyectosProgramaciónSoftware\PSofVentas\CapaDePresentacion\obj\Debug\CapaDePresentacion.csproj.AssemblyReference.cache

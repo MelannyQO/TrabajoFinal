@@ -1,0 +1,128 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="VENTASModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="FACTURA">
+    <Key>
+      <PropertyRef Name="COD_FACTURA" />
+    </Key>
+    <Property Name="N_DOC_USUARIO" Type="int" Nullable="false" />
+    <Property Name="COD_FACTURA" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FECHA" Type="date" Nullable="false" />
+    <Property Name="ESTADO" Type="varchar" MaxLength="1" />
+    <Property Name="VALOR_PAGADO" Type="money" Nullable="false" />
+  </EntityType>
+  <EntityType Name="FACTURA_PRODUCTO">
+    <Key>
+      <PropertyRef Name="COD_FAC" />
+      <PropertyRef Name="ID_PROD" />
+    </Key>
+    <Property Name="COD_FAC" Type="int" Nullable="false" />
+    <Property Name="ID_PROD" Type="int" Nullable="false" />
+    <Property Name="CANTIDAD" Type="int" />
+  </EntityType>
+  <EntityType Name="PRODUCTO">
+    <Key>
+      <PropertyRef Name="ID_PRODUCTO" />
+    </Key>
+    <Property Name="ID_PRODUCTO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TIPO_PRENDA" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="COLOR" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="MARCA" Type="varchar" MaxLength="35" Nullable="false" />
+    <Property Name="TALLA" Type="varchar" MaxLength="5" Nullable="false" />
+    <Property Name="PRECIO" Type="money" Nullable="false" />
+  </EntityType>
+  <EntityType Name="USUARIO">
+    <Key>
+      <PropertyRef Name="NUM_DOCUMENTO" />
+    </Key>
+    <Property Name="NOMBRE" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="APELLIDO" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="TIPO_DOCUMENTO" Type="varchar" MaxLength="20" />
+    <Property Name="NUM_DOCUMENTO" Type="int" Nullable="false" />
+    <Property Name="FECHA_NACIMIENTO" Type="date" />
+    <Property Name="GENERO" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="EMAIL" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="CONTRASENIA" Type="varchar" MaxLength="30" Nullable="false" />
+  </EntityType>
+  <Association Name="FK__FACTURA__N_DOC_U__286302EC">
+    <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="FACTURA" Type="Self.FACTURA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="USUARIO">
+        <PropertyRef Name="NUM_DOCUMENTO" />
+      </Principal>
+      <Dependent Role="FACTURA">
+        <PropertyRef Name="N_DOC_USUARIO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__FACTURA_P__COD_F__2D27B809">
+    <End Role="FACTURA" Type="Self.FACTURA" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="FACTURA_PRODUCTO" Type="Self.FACTURA_PRODUCTO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="FACTURA">
+        <PropertyRef Name="COD_FACTURA" />
+      </Principal>
+      <Dependent Role="FACTURA_PRODUCTO">
+        <PropertyRef Name="COD_FAC" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__FACTURA_P__ID_PR__2E1BDC42">
+    <End Role="PRODUCTO" Type="Self.PRODUCTO" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="FACTURA_PRODUCTO" Type="Self.FACTURA_PRODUCTO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PRODUCTO">
+        <PropertyRef Name="ID_PRODUCTO" />
+      </Principal>
+      <Dependent Role="FACTURA_PRODUCTO">
+        <PropertyRef Name="ID_PROD" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="SP_ActualizarUsuario" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="NOMBRE" Type="nvarchar" Mode="In" />
+    <Parameter Name="APELLIDO" Type="nvarchar" Mode="In" />
+    <Parameter Name="TIPO_DOC" Type="varchar" Mode="In" />
+    <Parameter Name="NUM_DOCUMENTO" Type="int" Mode="In" />
+    <Parameter Name="FECHA_NACIMIENTO" Type="date" Mode="In" />
+    <Parameter Name="GENERO" Type="varchar" Mode="In" />
+    <Parameter Name="EMAIL" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="SP_EliminarUsuario" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="NUM_DOCUMENTO" Type="int" Mode="In" />
+  </Function>
+  <Function Name="SP_InsertarUsuario" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="NOMBRE" Type="nvarchar" Mode="In" />
+    <Parameter Name="APELLIDO" Type="nvarchar" Mode="In" />
+    <Parameter Name="TIPO_DOC" Type="varchar" Mode="In" />
+    <Parameter Name="NUM_DOCUMENTO" Type="int" Mode="In" />
+    <Parameter Name="FECHA_NACIMIENTO" Type="date" Mode="In" />
+    <Parameter Name="GENERO" Type="varchar" Mode="In" />
+    <Parameter Name="EMAIL" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="SP_ListarUsuarios" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <EntityContainer Name="VENTASModelStoreContainer">
+    <EntitySet Name="FACTURA" EntityType="Self.FACTURA" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="FACTURA_PRODUCTO" EntityType="Self.FACTURA_PRODUCTO" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PRODUCTO" EntityType="Self.PRODUCTO" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="USUARIO" EntityType="Self.USUARIO" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__FACTURA__N_DOC_U__286302EC" Association="Self.FK__FACTURA__N_DOC_U__286302EC">
+      <End Role="USUARIO" EntitySet="USUARIO" />
+      <End Role="FACTURA" EntitySet="FACTURA" />
+    </AssociationSet>
+    <AssociationSet Name="FK__FACTURA_P__COD_F__2D27B809" Association="Self.FK__FACTURA_P__COD_F__2D27B809">
+      <End Role="FACTURA" EntitySet="FACTURA" />
+      <End Role="FACTURA_PRODUCTO" EntitySet="FACTURA_PRODUCTO" />
+    </AssociationSet>
+    <AssociationSet Name="FK__FACTURA_P__ID_PR__2E1BDC42" Association="Self.FK__FACTURA_P__ID_PR__2E1BDC42">
+      <End Role="PRODUCTO" EntitySet="PRODUCTO" />
+      <End Role="FACTURA_PRODUCTO" EntitySet="FACTURA_PRODUCTO" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

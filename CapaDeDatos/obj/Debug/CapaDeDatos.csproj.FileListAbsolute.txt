@@ -1,0 +1,4 @@
+C:\Users\MelannyQuintero\Desktop\ProyectosProgramaciónSoftware\PSofVentas\CapaDeDatos\obj\Debug\CapaDeDatos.csproj.AssemblyReference.cache
+C:\Users\MelannyQuintero\Desktop\ProyectosProgramaciónSoftware\PSofVentas\CapaDeDatos\obj\Debug\CapaDeDatos.Properties.Resources.resources
+C:\Users\MelannyQuintero\Desktop\ProyectosProgramaciónSoftware\PSofVentas\CapaDeDatos\obj\Debug\CapaDeDatos.csproj.GenerateResource.cache
+C:\Users\MelannyQuintero\Desktop\ProyectosProgramaciónSoftware\PSofVentas\CapaDeDatos\obj\Debug\CapaDeDatos.csproj.CoreCompileInputs.cache

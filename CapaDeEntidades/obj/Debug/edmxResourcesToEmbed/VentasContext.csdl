@@ -1,0 +1,144 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="VENTASModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="FACTURA">
+    <Key>
+      <PropertyRef Name="COD_FACTURA" />
+    </Key>
+    <Property Name="N_DOC_USUARIO" Type="Int32" Nullable="false" />
+    <Property Name="COD_FACTURA" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FECHA" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="ESTADO" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Name="VALOR_PAGADO" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+    <NavigationProperty Name="USUARIO" Relationship="Self.FK__FACTURA__N_DOC_U__286302EC" FromRole="FACTURA" ToRole="USUARIO" />
+    <NavigationProperty Name="FACTURA_PRODUCTO" Relationship="Self.FK__FACTURA_P__COD_F__2D27B809" FromRole="FACTURA" ToRole="FACTURA_PRODUCTO" />
+  </EntityType>
+  <EntityType Name="FACTURA_PRODUCTO">
+    <Key>
+      <PropertyRef Name="COD_FAC" />
+      <PropertyRef Name="ID_PROD" />
+    </Key>
+    <Property Name="COD_FAC" Type="Int32" Nullable="false" />
+    <Property Name="ID_PROD" Type="Int32" Nullable="false" />
+    <Property Name="CANTIDAD" Type="Int32" />
+    <NavigationProperty Name="FACTURA" Relationship="Self.FK__FACTURA_P__COD_F__2D27B809" FromRole="FACTURA_PRODUCTO" ToRole="FACTURA" />
+    <NavigationProperty Name="PRODUCTO" Relationship="Self.FK__FACTURA_P__ID_PR__2E1BDC42" FromRole="FACTURA_PRODUCTO" ToRole="PRODUCTO" />
+  </EntityType>
+  <EntityType Name="PRODUCTO">
+    <Key>
+      <PropertyRef Name="ID_PRODUCTO" />
+    </Key>
+    <Property Name="ID_PRODUCTO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TIPO_PRENDA" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="COLOR" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="MARCA" Type="String" MaxLength="35" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="TALLA" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="PRECIO" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+    <NavigationProperty Name="FACTURA_PRODUCTO" Relationship="Self.FK__FACTURA_P__ID_PR__2E1BDC42" FromRole="PRODUCTO" ToRole="FACTURA_PRODUCTO" />
+  </EntityType>
+  <EntityType Name="USUARIO">
+    <Key>
+      <PropertyRef Name="NUM_DOCUMENTO" />
+    </Key>
+    <Property Name="NOMBRE" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="APELLIDO" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="TIPO_DOCUMENTO" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="NUM_DOCUMENTO" Type="Int32" Nullable="false" />
+    <Property Name="FECHA_NACIMIENTO" Type="DateTime" Precision="0" />
+    <Property Name="GENERO" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="EMAIL" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="CONTRASENIA" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="FACTURA" Relationship="Self.FK__FACTURA__N_DOC_U__286302EC" FromRole="USUARIO" ToRole="FACTURA" />
+  </EntityType>
+  <Association Name="FK__FACTURA__N_DOC_U__286302EC">
+    <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="FACTURA" Type="Self.FACTURA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="USUARIO">
+        <PropertyRef Name="NUM_DOCUMENTO" />
+      </Principal>
+      <Dependent Role="FACTURA">
+        <PropertyRef Name="N_DOC_USUARIO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__FACTURA_P__COD_F__2D27B809">
+    <End Role="FACTURA" Type="Self.FACTURA" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="FACTURA_PRODUCTO" Type="Self.FACTURA_PRODUCTO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="FACTURA">
+        <PropertyRef Name="COD_FACTURA" />
+      </Principal>
+      <Dependent Role="FACTURA_PRODUCTO">
+        <PropertyRef Name="COD_FAC" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__FACTURA_P__ID_PR__2E1BDC42">
+    <End Role="PRODUCTO" Type="Self.PRODUCTO" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="FACTURA_PRODUCTO" Type="Self.FACTURA_PRODUCTO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PRODUCTO">
+        <PropertyRef Name="ID_PRODUCTO" />
+      </Principal>
+      <Dependent Role="FACTURA_PRODUCTO">
+        <PropertyRef Name="ID_PROD" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="VENTASEntities1" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="FACTURA" EntityType="Self.FACTURA" />
+    <EntitySet Name="FACTURA_PRODUCTO" EntityType="Self.FACTURA_PRODUCTO" />
+    <EntitySet Name="PRODUCTO" EntityType="Self.PRODUCTO" />
+    <EntitySet Name="USUARIO" EntityType="Self.USUARIO" />
+    <AssociationSet Name="FK__FACTURA__N_DOC_U__286302EC" Association="Self.FK__FACTURA__N_DOC_U__286302EC">
+      <End Role="USUARIO" EntitySet="USUARIO" />
+      <End Role="FACTURA" EntitySet="FACTURA" />
+    </AssociationSet>
+    <AssociationSet Name="FK__FACTURA_P__COD_F__2D27B809" Association="Self.FK__FACTURA_P__COD_F__2D27B809">
+      <End Role="FACTURA" EntitySet="FACTURA" />
+      <End Role="FACTURA_PRODUCTO" EntitySet="FACTURA_PRODUCTO" />
+    </AssociationSet>
+    <AssociationSet Name="FK__FACTURA_P__ID_PR__2E1BDC42" Association="Self.FK__FACTURA_P__ID_PR__2E1BDC42">
+      <End Role="PRODUCTO" EntitySet="PRODUCTO" />
+      <End Role="FACTURA_PRODUCTO" EntitySet="FACTURA_PRODUCTO" />
+    </AssociationSet>
+    <FunctionImport Name="SP_ActualizarUsuario">
+      <Parameter Name="NOMBRE" Mode="In" Type="String" />
+      <Parameter Name="APELLIDO" Mode="In" Type="String" />
+      <Parameter Name="TIPO_DOC" Mode="In" Type="String" />
+      <Parameter Name="NUM_DOCUMENTO" Mode="In" Type="Int32" />
+      <Parameter Name="FECHA_NACIMIENTO" Mode="In" Type="DateTime" />
+      <Parameter Name="GENERO" Mode="In" Type="String" />
+      <Parameter Name="EMAIL" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="SP_EliminarUsuario">
+      <Parameter Name="NUM_DOCUMENTO" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="SP_InsertarUsuario">
+      <Parameter Name="NOMBRE" Mode="In" Type="String" />
+      <Parameter Name="APELLIDO" Mode="In" Type="String" />
+      <Parameter Name="TIPO_DOC" Mode="In" Type="String" />
+      <Parameter Name="NUM_DOCUMENTO" Mode="In" Type="Int32" />
+      <Parameter Name="FECHA_NACIMIENTO" Mode="In" Type="DateTime" />
+      <Parameter Name="GENERO" Mode="In" Type="String" />
+      <Parameter Name="EMAIL" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="SP_ListarUsuarios" ReturnType="Collection(VENTASModel.SP_ListarUsuarios_Result)" />
+  </EntityContainer>
+  <ComplexType Name="SP_ListarUsuarios_Result">
+    <Property Type="String" Name="NOMBRE" Nullable="false" MaxLength="30" />
+    <Property Type="String" Name="APELLIDO" Nullable="false" MaxLength="30" />
+    <Property Type="String" Name="APELLIDO1" Nullable="false" MaxLength="30" />
+    <Property Type="String" Name="TIPO_DOCUMENTO" Nullable="true" MaxLength="20" />
+    <Property Type="Int32" Name="NUM_DOCUMENTO" Nullable="false" />
+    <Property Type="DateTime" Name="FECHA_NACIMIENTO" Nullable="true" />
+    <Property Type="String" Name="GENERO" Nullable="false" MaxLength="20" />
+    <Property Type="String" Name="EMAIL" Nullable="false" MaxLength="30" />
+  </ComplexType>
+</Schema>

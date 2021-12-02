@@ -1,0 +1,8 @@
+C:\Users\MelannyQuintero\Desktop\ProyectosProgramaciónSoftware\PSofVentas\CapaDeLogica\bin\Debug\CapaDeLogica.exe.config
+C:\Users\MelannyQuintero\Desktop\ProyectosProgramaciónSoftware\PSofVentas\CapaDeLogica\bin\Debug\CapaDeLogica.exe
+C:\Users\MelannyQuintero\Desktop\ProyectosProgramaciónSoftware\PSofVentas\CapaDeLogica\bin\Debug\CapaDeLogica.pdb
+C:\Users\MelannyQuintero\Desktop\ProyectosProgramaciónSoftware\PSofVentas\CapaDeLogica\obj\Debug\CapaDeLogica.Properties.Resources.resources
+C:\Users\MelannyQuintero\Desktop\ProyectosProgramaciónSoftware\PSofVentas\CapaDeLogica\obj\Debug\CapaDeLogica.csproj.GenerateResource.cache
+C:\Users\MelannyQuintero\Desktop\ProyectosProgramaciónSoftware\PSofVentas\CapaDeLogica\obj\Debug\CapaDeLogica.csproj.CoreCompileInputs.cache
+C:\Users\MelannyQuintero\Desktop\ProyectosProgramaciónSoftware\PSofVentas\CapaDeLogica\obj\Debug\CapaDeLogica.exe
+C:\Users\MelannyQuintero\Desktop\ProyectosProgramaciónSoftware\PSofVentas\CapaDeLogica\obj\Debug\CapaDeLogica.pdb
